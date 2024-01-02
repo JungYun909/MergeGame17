@@ -32,6 +32,7 @@ public class PlayerObject : MonoBehaviour
     void GiveObject()
     {
         playerObject = GenerateManager.objectID.Pop(); // 순서대로 오브젝트 반출
+        generateManager.GenerateObject();
 
         GameObject newObject;
 
