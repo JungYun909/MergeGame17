@@ -9,12 +9,13 @@ public class PlayerObject : MonoBehaviour
 
     private int gravityScale=1;
 
-    private GenerateManager generateManager = new GenerateManager();
+    private GenerateManager generateManager;
     public int playerObject;
     
     // Start is called before the first frame update
     void Start()
     {
+        generateManager = gameObject.AddComponent<GenerateManager>();
         generateManager.GenerateObject();
         GiveObject();
     }
