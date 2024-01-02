@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerObject : MonoBehaviour
 {
-    public GameObject object1;
-    public GameObject object2;
-    public GameObject object3;
+    public GameObject[] Fruits = new GameObject[4];
+    public Transform SpawnPoint;
 
     private int gravityScale=1;
 
@@ -25,9 +24,9 @@ public class PlayerObject : MonoBehaviour
     void InputKey()
     {
         GetComponent<Rigidbody2D>().gravityScale = gravityScale; // 아이템을 떨어뜨리기 위해 중력값 수정
-        Invoke("GiveObject", 1f); // 1초뒤 다음 오브젝트 새엇ㅇ
+        Invoke("GiveObject", 1f); // 1초뒤 다음 오브젝트 생성
 
-    }
+    } 
 
     void GiveObject()
     {
@@ -38,13 +37,17 @@ public class PlayerObject : MonoBehaviour
         switch (playerObject)
         {
             case 1:
-                newObject = Instantiate(object1);
+                newObject = Instantiate(Fruits[1], SpawnPoint.position, Quaternion.identity);
                 break;
             case 2:
-                newObject = Instantiate(object2);
+                newObject = Instantiate(Fruits[2], SpawnPoint.position, Quaternion.identity);
                 break;
+            case 3:
+                newObject = Instantiate(Fruits[3], SpawnPoint.position, Quaternion.identity);
+                break;
+
             default:
-                newObject = Instantiate(object3);
+                newObject = Instantiate(Fruits[4], SpawnPoint.position, Quaternion.identity);
                 break;
         }
 
