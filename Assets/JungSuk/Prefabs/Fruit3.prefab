@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5277140689029179761}
   - component: {fileID: 2013761702600178695}
   - component: {fileID: 5433075860674203071}
+  - component: {fileID: -4074891606876913070}
   m_Layer: 0
   m_Name: Fruit3
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +100,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fruitData: {fileID: 11400000, guid: fd91aaa34f926184d9fee75f2eee1d06, type: 2}
   Point: 0
+--- !u!114 &-4074891606876913070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087480822617403571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e983dd23db81144c9ce20e33fff7c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  isMerge: 0
