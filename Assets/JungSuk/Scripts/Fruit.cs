@@ -20,17 +20,20 @@ public class Fruit : MonoBehaviour
 
     private void SettingFruit(FruitData fruitData)
     {
-        gameObject.name = fruitData.FruitName;
+        if (fruitData != null)
+        {
+            gameObject.name = fruitData.FruitName;
 
-        Point = fruitData.FruitPoint;
+            Point = fruitData.FruitPoint;
 
-        gameObject.layer = LayerMask.NameToLayer("Fruit");
-        //gameObject.layer |= fruitData.FruitMask
-        
-        transform.localScale = fruitData.FruitSize;
+            gameObject.layer = LayerMask.NameToLayer("Fruit");
+            //gameObject.layer |= fruitData.FruitMask
 
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        renderer.color = fruitData.FruitColor;
+            transform.localScale = fruitData.FruitSize;
+
+            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+            renderer.color = fruitData.FruitColor;
+        }
     }
 
 }
