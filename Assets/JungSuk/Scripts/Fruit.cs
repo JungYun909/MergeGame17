@@ -5,35 +5,22 @@ using UnityEngine.UIElements;
 
 public class Fruit : MonoBehaviour
 {
+    Animator anim;
     public FruitData fruitData;
     public int Point;
+    public int level;
 
     private void Awake()
     {
-      
+        anim = GetComponent<Animator>();
+
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        SettingFruit(fruitData);
+        level = GameManager.I.newFruitLevel;
+        anim.SetInteger("Level", level);
     }
 
-    private void SettingFruit(FruitData fruitData)
-    {
-        if (fruitData != null)
-        {
-            gameObject.name = fruitData.FruitName;
-
-            Point = fruitData.FruitPoint;
-
-            gameObject.layer = LayerMask.NameToLayer("Fruit");
-            //gameObject.layer |= fruitData.FruitMask
-
-            transform.localScale = fruitData.FruitSize;
-
-            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-            renderer.color = fruitData.FruitColor;
-        }
-    }
 
 }

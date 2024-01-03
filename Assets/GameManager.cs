@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,12 +21,24 @@ public class GameManager : MonoBehaviour
     public GameObject berryPrefab;
     public string appleTag = "Apple"; //»ç°ú. 
     public GameObject applePrefab;
-    private bool isProcessingCollision = false; 
+    private bool isProcessingCollision = false;
+
+
+    public int newFruitLevel;
+
+    private System.Random random;
+    static public RingBuffer<int> objectID = new RingBuffer<int>(10);
 
 
     void Awake()
     {
         I = this;
+
+        for (int i =1; i <=10; i++)
+        {
+            GenerateObject();
+            Debug.Log(i);
+        }
     }
 
     public int totalScore = 0; 
@@ -93,15 +106,18 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = totalScore.ToString(); 
     }
-
-    void Start()
+    public void GenerateObject()
     {
-        
+        random = new System.Random();
+        int num = random.Next(1, 5);
+        objectID.Push(num);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ObjectPop()
     {
-        
+        newFruitLevel = objectID.Pop();
+        GenerateObject();
     }
+
 }
