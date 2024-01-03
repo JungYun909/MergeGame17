@@ -26,10 +26,9 @@ public class Fruit : MonoBehaviour
 
             Point = fruitData.FruitPoint;
 
-            gameObject.layer = LayerMask.NameToLayer("Fruit");
-            //gameObject.layer |= fruitData.FruitMask
+           
 
-            gameObject.tag = fruitData.FruitTag;
+            //gameObject.tag = fruitData.FruitTag; 태그 출돌 필요시 사용
             transform.localScale = fruitData.FruitSize;
 
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
