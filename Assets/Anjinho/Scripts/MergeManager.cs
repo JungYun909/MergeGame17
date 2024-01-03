@@ -71,7 +71,6 @@ public class MergeManager : MonoBehaviour
             GameObject fruit2 = GameObject.Find("Fruit").transform.Find("Fruit2").gameObject;
             fruit2.SetActive(true);
             fruit2.transform.position = newPosition;
-
         }
         if (level == 2)
         {
