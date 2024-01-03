@@ -17,5 +17,6 @@ MonoBehaviour:
   fruitMask:
     serializedVersion: 2
     m_Bits: 64
+  fruitTag: Berry
   fruitSize: {x: 0.2, y: 0.2}
   fruitColor: {r: 1, g: 0, b: 0, a: 1}
