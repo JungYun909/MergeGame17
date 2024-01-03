@@ -29,6 +29,7 @@ public class Fruit : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Fruit");
             //gameObject.layer |= fruitData.FruitMask
 
+            gameObject.tag = fruitData.FruitTag;
             transform.localScale = fruitData.FruitSize;
 
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
