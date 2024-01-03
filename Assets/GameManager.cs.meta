@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 16b1e56553e944843b1cc2681ddcc4b1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scoreText: {instanceID: 0}
+  - berryPrefab: {fileID: 285356984651659723, guid: 267252ce87d194d41b38b82a0f1bff83, type: 3}
+  - applePrefab: {fileID: 9078089967217970314, guid: 4f01b11602b2f6d408474d2a6660e471, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
