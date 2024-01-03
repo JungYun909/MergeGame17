@@ -26,8 +26,7 @@ public class Fruit : MonoBehaviour
 
             Point = fruitData.FruitPoint;
 
-            gameObject.layer = LayerMask.NameToLayer("Fruit");
-            //gameObject.layer |= fruitData.FruitMask
+            
 
             transform.localScale = fruitData.FruitSize;
 
