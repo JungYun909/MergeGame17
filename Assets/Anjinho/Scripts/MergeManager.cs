@@ -69,6 +69,7 @@ public class MergeManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         animator.SetInteger("Level", fruitLevel + 1);
         yield return new WaitForSeconds(0.3f);
+        fruitLevel++;
         isMerge = false;
 
     }
