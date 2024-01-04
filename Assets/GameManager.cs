@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager I; 
-    public Text scoreText; 
+    public static GameManager I;
+    public Text scoreText;
 
     public int berryScore = 1;  // 딸기끼리 부딪혔을 때.
     public int appleScore = 5;  // 사과끼리 부딪혔을 때.
@@ -20,30 +21,41 @@ public class GameManager : MonoBehaviour
     public GameObject berryPrefab;
     public string appleTag = "Apple"; //사과. 
     public GameObject applePrefab;
-    private bool isProcessingCollision = false; 
+    private bool isProcessingCollision = false;
+
+
+    public int newFruitLevel;
+
+    private System.Random random;
+    static public RingBuffer<int> objectID = new RingBuffer<int>(10);
 
 
     void Awake()
     {
         I = this;
+
+        for (int i = 1; i <= 10; i++)
+        {
+            GenerateObject();
+        }
     }
 
-    public int totalScore = 0; 
+    public int totalScore = 0;
 
     public void addScore(Collision2D collision)
     {
         if (isProcessingCollision) return; // 이미 처리 중이라면 빠져나감 
         isProcessingCollision = true;
 
-        string collidedTag = collision.gameObject.tag; 
-        Debug.Log(collision.gameObject.name); 
+        string collidedTag = collision.gameObject.tag;
+        Debug.Log(collision.gameObject.name);
 
-        if (collidedTag == berryTag) 
+        if (collidedTag == berryTag)
         {
             berryCollision(collision.gameObject);
             Debug.Log("0.1");
         }
-        else if (collidedTag == appleTag) 
+        else if (collidedTag == appleTag)
         {
             AppleCollision(collision.gameObject);
             Debug.Log("0.2");
@@ -59,10 +71,10 @@ public class GameManager : MonoBehaviour
         else if (collision.gameObject.CompareTag(appleTag))
         {
             AppleCollision(collision.gameObject);
-        }*/ 
+        }*/
 
         scoreText.text = totalScore.ToString(); // 점수 오르면 텍스트 변경  
-        isProcessingCollision = false; 
+        isProcessingCollision = false;
     }
 
     private void berryCollision(GameObject berry)
@@ -70,12 +82,12 @@ public class GameManager : MonoBehaviour
         isProcessingCollision = true; // 이 위치로 이동
                                       // 딸기 태그의 오브젝트가 충돌하면 사과 태그의 오브젝트 한 개를 생성하고,
                                       // 딸기 태그의 오브젝트 두 개를 파괴하며, 점수를 증가시킵니다.
-        //Instantiate(applePrefab, berry.transform.position, Quaternion.identity); 파괴하고 생성해야하는데 사과 생성하며 파괴함 
-        Destroy(berry); 
+                                      //Instantiate(applePrefab, berry.transform.position, Quaternion.identity); 파괴하고 생성해야하는데 사과 생성하며 파괴함 
+        Destroy(berry);
         totalScore += berryScore;
         Debug.Log(berryTag);
         UpdateScoreText();
-        isProcessingCollision = false; 
+        isProcessingCollision = false;
     }
 
     private void AppleCollision(GameObject apple)
@@ -83,25 +95,28 @@ public class GameManager : MonoBehaviour
         isProcessingCollision = true; // 이 위치로 이동
         totalScore += appleScore;
         Destroy(apple); // 현재 스크립트가 연결된 오브젝트를 파괴합니다. 
-        Debug.Log(appleTag); 
-        UpdateScoreText(); 
+        Debug.Log(appleTag);
+        UpdateScoreText();
 
         isProcessingCollision = false; // 이 위치로 이동
     }
 
     void UpdateScoreText()
     {
-        scoreText.text = totalScore.ToString(); 
+        scoreText.text = totalScore.ToString();
+    }
+    public void GenerateObject()
+    {
+        random = new System.Random();
+        int num = random.Next(1, 5);
+        objectID.Push(num);
+
     }
 
-    void Start()
+    public void ObjectPop()
     {
-        
+        newFruitLevel = objectID.Pop();
+        GenerateObject();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
