@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,7 @@ public class Fruit : MonoBehaviour
     public FruitData fruitData3;
     public FruitData fruitData4;
 
+
     public int Point;
     public int level;
 
@@ -19,32 +21,35 @@ public class Fruit : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
+        
+
     }
-
-    private void OnEnable()
-    {
-        level = GameManager.I.newFruitLevel;
-        anim.SetInteger("Level", level);
-        switch(level)
-        {
-            case 1:
-                SettingFruit(fruitData1);
-            break;
+    
+    
+    //private void OnEnable()
+    //{
+    //    //level = GameManager.I.newFruitLevel;
+    //    anim.SetInteger("Level", level);
+    //    switch(level)
+    //    {
+    //        case 1:
+    //            SettingFruit(fruitData1);
+    //        break;
             
-            case 2:
-                SettingFruit(fruitData2);
-            break;
+    //        case 2:
+    //            SettingFruit(fruitData2);
+    //        break;
             
-            case 3:
-                SettingFruit(fruitData3);
-            break;
+    //        case 3:
+    //            SettingFruit(fruitData3);
+    //        break;
 
-            default:
-                SettingFruit(fruitData4);
-            break;
+    //        default:
+    //            SettingFruit(fruitData4);
+    //        break;
 
-        }
-    }
+    //    }
+    //}
 
     private void SettingFruit(FruitData fruitData)
     {
@@ -59,4 +64,27 @@ public class Fruit : MonoBehaviour
         //renderer.color = fruitData.FruitColor;
     }
 
+    public void Setting()
+    {
+        anim.SetInteger("Level", level);
+        switch (level)
+        {
+            case 1:
+                SettingFruit(fruitData1);
+                break;
+
+            case 2:
+                SettingFruit(fruitData2);
+                break;
+
+            case 3:
+                SettingFruit(fruitData3);
+                break;
+
+            default:
+                SettingFruit(fruitData4);
+                break;
+
+        }
+    }
 }
