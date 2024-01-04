@@ -7,12 +7,14 @@ public class MergeManager : MonoBehaviour
     public int level;
     public bool isMerge;
 
+    public Fruit fruit;
 
     Rigidbody2D rigid;
     CircleCollider2D circleCollider;
 
     private void Awake()
     {
+        level = fruit.level;
         rigid = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
@@ -23,8 +25,9 @@ public class MergeManager : MonoBehaviour
         {
             MergeManager other = collision.gameObject.GetComponent<MergeManager>();
 
-            if (level == other.level && !isMerge && !other.isMerge && level < 4) // 동글 합치기 (합치는 도중에 개입되는 것 방지)
+            if (level == other.level) // 동글 합치기 (합치는 도중에 개입되는 것 방지) if (level == other.level && !isMerge && !other.isMerge && level < 4)
             {
+                FruitLevleUp();
                 // 자신과 상대편 위치 가져오기
                 float meX = transform.position.x;
                 float meY = transform.position.y;

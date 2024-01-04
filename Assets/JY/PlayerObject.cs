@@ -62,8 +62,6 @@ public class PlayerObject : MonoBehaviour
         GameObject newObject;
         newObject = Instantiate(Fruits, SpawnPoint.position, Quaternion.identity);
         
-        // 기존 오브젝트 비활성화
-        //gameObject.SetActive(false);
         newObject.transform.parent = GameObject.Find("Objects").transform;
 
 

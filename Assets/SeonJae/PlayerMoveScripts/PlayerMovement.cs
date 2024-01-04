@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 MoveValue = Vector2.zero;
     private Rigidbody2D rigidbody;
     [SerializeField] private Transform playerPosition;
+
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
