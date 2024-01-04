@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class MergeManager : MonoBehaviour
 {
-    public int level;
     public Fruit fruit;
     private int fruitLevel;
     private bool isMerge;
-
 
     Rigidbody2D rigid;
     CircleCollider2D circleCollider;
@@ -25,8 +23,6 @@ public class MergeManager : MonoBehaviour
     private void Start()
     {
         fruit.Setting();
-        Debug.Log(fruit);
-        Debug.Log(fruit.level);
         fruitLevel = fruit.level;
     }
 
@@ -36,7 +32,7 @@ public class MergeManager : MonoBehaviour
         {
             MergeManager other = collision.gameObject.GetComponent<MergeManager>();
 
-            if (level == other.level && !isMerge && !other.isMerge && level < 4) // 동글 합치기 (합치는 도중에 개입되는 것 방지)
+            if (fruitLevel == other.fruitLevel && !isMerge && !other.isMerge && fruitLevel < 5) // 동글 합치기 (합치는 도중에 개입되는 것 방지)
             {
                 // 자신과 상대편 위치 가져오기
                 float meX = transform.position.x;
@@ -97,6 +93,7 @@ public class MergeManager : MonoBehaviour
         }
         isMerge = false;
         gameObject.SetActive(false);
+        Destroy(gameObject);
 
     }
 }
