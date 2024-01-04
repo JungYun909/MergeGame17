@@ -37,23 +37,28 @@ public class Fruit : MonoBehaviour
 
     public void Setting()
     {
+        level = GameManager.I.newFruitLevel;
         anim.SetInteger("Level", level);
         switch (level)
         {
             case 1:
                 SettingFruit(fruitData1);
+                Debug.Log("체리세팅");
                 break;
 
             case 2:
                 SettingFruit(fruitData2);
+                Debug.Log("딸기세팅");
                 break;
 
             case 3:
                 SettingFruit(fruitData3);
+                Debug.Log("포도세팅");
                 break;
 
             default:
                 SettingFruit(fruitData4);
+                Debug.Log("오렌지세팅");
                 break;
 
         }
