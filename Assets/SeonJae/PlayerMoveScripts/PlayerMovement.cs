@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ApplyMovement(Vector2 value)
     {
-        if (playerPosition.transform.position.x > -5 && playerPosition.transform.position.x < 5)
+        if (playerPosition.transform.position.x > -2.8 && playerPosition.transform.position.x < 3)
         {
             value = value * 5;
             rigidbody.velocity = value;
@@ -44,13 +44,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // 범위를 벗어나면 다른 위치로 이동하도록 처리
-        if (playerPosition.transform.position.x <= -5)
+        if (playerPosition.transform.position.x <= -2.8)
         {
-            playerPosition.transform.position = new Vector3(-4.9f, playerPosition.transform.position.y, playerPosition.transform.position.z);
+            playerPosition.transform.position = new Vector3(-2.79f, playerPosition.transform.position.y, playerPosition.transform.position.z);
         }
-        else if (playerPosition.transform.position.x >= 5)
+        else if (playerPosition.transform.position.x >= 3)
         {
-            playerPosition.transform.position = new Vector3(4.9f, playerPosition.transform.position.y, playerPosition.transform.position.z);
+            playerPosition.transform.position = new Vector3(2.9f, playerPosition.transform.position.y, playerPosition.transform.position.z);
         }
     }
 }
