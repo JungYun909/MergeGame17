@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e983dd23db81144c9ce20e33fff7c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  fruitlevel: 0
   isMerge: 0
   fruit: {fileID: -3795818664584804615}
 --- !u!58 &416773947529603449
@@ -152,7 +152,7 @@ MonoBehaviour:
   fruitData3: {fileID: 11400000, guid: fd91aaa34f926184d9fee75f2eee1d06, type: 2}
   fruitData4: {fileID: 11400000, guid: 68c57df8bb08f2743a10ce29c336b1e1, type: 2}
   Point: 0
-  level: 0
+  level: 1
 --- !u!212 &6179294169026433446
 SpriteRenderer:
   m_ObjectHideFlags: 0
