@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class FruitList : MonoBehaviour
 {
-    public GameObject[] fruits = new GameObject[10];
-    public Sprite[] sprites = new Sprite[10];
-    public int[] fruitsID = new int[10];
+    public GameObject fruits;
+    public Sprite[] sprites = new Sprite[9];
+    public int fruitsID;
 
     private void Start()
     {
@@ -22,13 +22,12 @@ public class FruitList : MonoBehaviour
     
     void FruitListSetting()
     {
-        for (int i = 0; i <= 9; i++)
-        {
-            fruitsID[i] = GameManager.objectID.buffer[i];
-            fruits[i].GetComponent<SpriteRenderer>().sprite = sprites[fruitsID[i]-1];
-            fruits[i].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-        }
+        fruitsID = GameManager.objectID.Peek();
+        fruits.GetComponent<SpriteRenderer>().sprite = sprites[fruitsID - 1];
+        fruits.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+
     }
 
 }
