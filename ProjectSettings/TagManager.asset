@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Berry
   - Apple
+  - Fruit
+  - Ground
   layers:
   - Default
   - TransparentFX

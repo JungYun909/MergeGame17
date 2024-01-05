@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class BerryScript : MonoBehaviour
 {
+    public string Box = "Ground"; //사과. 
     public Animator berryAnimator;
+    public Animator appleAnimator;
     public string berryTag = "Berry"; //딸기. 
     public GameObject berryPrefab;
     public string appleTag = "Apple"; //사과. 
@@ -24,16 +26,27 @@ public class BerryScript : MonoBehaviour
 
         string collidedTag = collision.gameObject.tag; 
 
-        if (collidedTag == berryTag) //if문 들어오나? 
+        if (collidedTag == berryTag || collidedTag == Box) //if문 들어오나? 
         {
+            Debug.Log("?");  
            berryAnimator.SetBool("BerryCrash", true); //부딪히면 트루  
-           Invoke("ReturnToOriginalState", 1.0f); //애니 1초 후 
+           Invoke("BAni", 1.0f); //애니 1초 후 
         }
 
+        if (collidedTag == appleTag || collidedTag == Box) //if문 들어오나? 
+        {
+            Debug.Log("?");
+            appleAnimator.SetBool("AppleCrash", true); //부딪히면 트루  
+            Invoke("Apni", 1.0f); //애니 1초 후 
+        }
     }
-    private void ReturnToOriginalState()
+    private void BAni() //이동함수 
     {
         berryAnimator.SetBool("BerryCrash", false); //원래대로 
+    }
+    private void Apni()
+    {
+        berryAnimator.SetBool("AppleCrash", false); //원래대로 
     }
 
     private void Start()
