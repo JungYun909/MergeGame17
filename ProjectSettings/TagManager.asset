@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Berry
   - Apple
+  - Fruit
+  - Ground
+  - EndBox
   layers:
   - Default
   - TransparentFX

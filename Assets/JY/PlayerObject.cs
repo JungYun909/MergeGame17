@@ -46,27 +46,7 @@ public class PlayerObject : MonoBehaviour
         playerObject = GameManager.I.newFruitLevel;
 
         anim.SetInteger("Level", playerObject);
-        switch (playerObject)
-        {
-            case 1:
-                Debug.Log("1");
-
-                break;
-
-            case 2:
-                Debug.Log("2");
-
-                break;
-            case 3:
-                Debug.Log("3");
-
-                break;
-
-            default:
-                Debug.Log("4");
-
-                break;
-        }
+        Debug.Log(playerObject);
     }
 
 

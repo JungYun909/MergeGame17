@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     public int newFruitLevel;
 
     private System.Random random;
-    static public RingBuffer<int> objectID = new RingBuffer<int>(10);
+    //static public RingBuffer<int> objectID = new RingBuffer<int>(10);
+    static public Queue<int> objectID = new Queue<int>();
 
 
     void Awake()
@@ -107,14 +108,14 @@ public class GameManager : MonoBehaviour
     public void GenerateObject()
     {
         random = new System.Random();
-        int num = random.Next(1, 5);
-        objectID.Push(num);
+        int num = random.Next(1, 10);
+        objectID.Enqueue(num);
 
     }
 
     public void ObjectPop()
     {
-        newFruitLevel = objectID.Pop();
+        newFruitLevel = objectID.Dequeue();
         GenerateObject();
     }
 
