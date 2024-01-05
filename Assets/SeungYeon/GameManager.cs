@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager I;
     public Text scoreText;
+    public int MergePoint;
 
     public int berryScore = 1;  // µş±â³¢¸® ºÎµúÇûÀ» ¶§.
     public int appleScore = 5;  // »ç°ú³¢¸® ºÎµúÇûÀ» ¶§.
