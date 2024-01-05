@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34ac1f488a8a894b92b6b73876cc979, type: 3}
+  m_Name: FruitData9
+  m_EditorClassIdentifier: 
+  fruitName: "\uBA5C\uB860"
+  fruitPoint: 200
+  fruitMask:
+    serializedVersion: 2
+    m_Bits: 0
+  fruitTag: Melon
+  fruitSize: {x: 2, y: 2}
+  fruitColor: {r: 0.12873535, g: 0.9622642, b: 0.086240634, a: 0}

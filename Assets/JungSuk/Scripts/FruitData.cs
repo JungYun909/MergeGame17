@@ -13,11 +13,16 @@ public class FruitData : ScriptableObject
     [SerializeField] private LayerMask fruitMask; // 과일 레이어 마스크
     public LayerMask FruitMask { get {  return fruitMask; } }
 
+    [SerializeField] private string fruitTag;
+    public string FruitTag { get {  return fruitTag; } }
+
     [SerializeField] private Vector2 fruitSize; // 과일 사이즈
     public Vector2 FruitSize { get {  return fruitSize; } }
 
     [SerializeField] private Color fruitColor; // 과일 색깔
-    public Color FruitColor { get {  return fruitColor; } }    
+    public Color FruitColor { get {  return fruitColor; } }  
+    
+
 
 
 

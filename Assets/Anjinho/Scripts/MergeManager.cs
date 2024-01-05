@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MergeManager : MonoBehaviour
 {
-    public int level;
-    public bool isMerge;
+    public Fruit fruit;
+    private int fruitLevel;
+    private bool isMerge;
 
     Rigidbody2D rigid;
     CircleCollider2D circleCollider;
@@ -13,26 +15,42 @@ public class MergeManager : MonoBehaviour
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void Start()
+    {
+        fruit.Setting();
+        fruitLevel = fruit.level;
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Fruit")
         {
             MergeManager other = collision.gameObject.GetComponent<MergeManager>();
-            if (level == other.level && !isMerge && !other.isMerge && level < 10)
+
+            if (fruitLevel == other.fruitLevel && !isMerge && !other.isMerge && fruitLevel < 5) // 동글 합치기 (합치는 도중에 개입되는 것 방지)
             {
-                float thisX = transform.position.x;
-                float thisY = transform.position.y;
-                float otherX = transform.position.x;
-                float otherY = transform.position.y;
-                if (thisY < otherY || (thisY == otherY && thisX < otherX))
+                // 자신과 상대편 위치 가져오기
+                float meX = transform.position.x;
+                float meY = transform.position.y;
+                float otherX = other.transform.position.x;
+                float otherY = other.transform.position.y;
+
+                // 1. 내가 아래에 있을 때
+                // 2. 동일한 높이일 때, 내가 오른쪽에 있을 때
+                if (meY < otherY || (meY == otherY && meX > otherX))
                 {
+                    // 상대방은 숨기기
                     other.HideFruit(transform.position);
+                    // 나는 레벨업
                     FruitLevleUp();
+
                 }
+
             }
         }
     }
@@ -46,13 +64,12 @@ public class MergeManager : MonoBehaviour
         StartCoroutine(FruitLevelUpRoutine());  //애니메이션
     }
 
-    IEnumerator FruitLevelUpRoutine()
+    IEnumerator FruitLevelUpRoutine()   
     {
-        yield return new WaitForSeconds(0.1f);
-        animator.SetInteger("Level", level + 1);
         yield return new WaitForSeconds(0.2f);
-        level++;
-
+        animator.SetInteger("Level", fruitLevel + 1);
+        yield return new WaitForSeconds(0.3f);
+        fruitLevel++;
         isMerge = false;
 
     }
@@ -77,5 +94,7 @@ public class MergeManager : MonoBehaviour
         }
         isMerge = false;
         gameObject.SetActive(false);
+        Destroy(gameObject);
+
     }
 }

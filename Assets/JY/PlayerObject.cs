@@ -1,59 +1,69 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerObject : MonoBehaviour
 {
-    public GameObject[] Fruits = new GameObject[4];
+    public GameObject Fruits;
     public Transform SpawnPoint;
 
-    private int gravityScale=1;
-
-    private GenerateManager generateManager;
     public int playerObject;
-    
-    // Start is called before the first frame update
-    void Start()
+
+
+    public void OnDrop(InputValue button)
     {
-        generateManager = gameObject.AddComponent<GenerateManager>();
-        generateManager.GenerateObject();
-        GiveObject();
+
+        InputKey();
     }
 
 
     // 키보드 입력을 받으면 호출되는 함수
-    void InputKey()
+    public void InputKey()
     {
-        GetComponent<Rigidbody2D>().gravityScale = gravityScale; // 아이템을 떨어뜨리기 위해 중력값 수정
-        Invoke("GiveObject", 1f); // 1초뒤 다음 오브젝트 생성
+        GameManager.I.ObjectPop();
+        playerObject = GameManager.I.newFruitLevel;
+        GiveObject();
+        ShowObject();
+      
 
     } 
 
-    void GiveObject()
+    void ShowObject()
     {
-        playerObject = GenerateManager.objectID.Pop(); // 순서대로 오브젝트 반출
-        generateManager.GenerateObject();
-
-        GameObject newObject;
-
         switch (playerObject)
         {
             case 1:
-                newObject = Instantiate(Fruits[1], SpawnPoint.position, Quaternion.identity);
+                Debug.Log("1");
+
                 break;
+
             case 2:
-                newObject = Instantiate(Fruits[2], SpawnPoint.position, Quaternion.identity);
+                Debug.Log("2");
+
                 break;
             case 3:
-                newObject = Instantiate(Fruits[3], SpawnPoint.position, Quaternion.identity);
+                Debug.Log("3");
+
                 break;
 
             default:
-                newObject = Instantiate(Fruits[4], SpawnPoint.position, Quaternion.identity);
+                Debug.Log("4");
+
                 break;
         }
+    }
 
+
+    void GiveObject()
+    {
+       
+        GameObject newObject;
+        newObject = Instantiate(Fruits, SpawnPoint.position, Quaternion.identity);
+        
         newObject.transform.parent = GameObject.Find("Objects").transform;
+
 
     }
 }
