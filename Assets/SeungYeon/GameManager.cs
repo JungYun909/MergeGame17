@@ -11,9 +11,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager I;
-    public Text scoreText;
+    public static GameManager I;    
     public int MergePoint;
+    public UIAudioManager uaManager;
 
     public int berryScore = 1;  // 딸기끼리 부딪혔을 때.
     public int appleScore = 5;  // 사과끼리 부딪혔을 때.
@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             GenerateObject();
         }
+        uaManager = GetComponentInChildren<UIAudioManager>();
     }
 
     public int totalScore = 0;
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour
             AppleCollision(collision.gameObject);
         }*/
 
-        scoreText.text = totalScore.ToString(); // 점수 오르면 텍스트 변경  
+       
         isProcessingCollision = false;
     }
 
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
         Destroy(berry);
         totalScore += berryScore;
         Debug.Log(berryTag);
-        UpdateScoreText();
+       
         isProcessingCollision = false;
     }
 
@@ -97,15 +98,12 @@ public class GameManager : MonoBehaviour
         totalScore += appleScore;
         Destroy(apple); // 현재 스크립트가 연결된 오브젝트를 파괴합니다. 
         Debug.Log(appleTag);
-        UpdateScoreText();
+       
 
         isProcessingCollision = false; // 이 위치로 이동
     }
 
-    void UpdateScoreText()
-    {
-        scoreText.text = totalScore.ToString();
-    }
+    
     public void GenerateObject()
     {
         random = new System.Random();

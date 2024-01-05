@@ -12,11 +12,13 @@ public class UIAudioManager : MonoBehaviour
     public TextMeshProUGUI BestScore;
     public TextMeshProUGUI MyScore;
     public TextMeshProUGUI PlayerScore;
+   
 
     // 오디오 관리할 오브젝트
 
     public AudioSource BgmMusic;
     public AudioSource EffectSound;
+    public AudioClip PopSound;
     public Slider BgmSlider;
     public Slider EffectSlider;
     // public AudioClip Effect; //이펙트 사운드 추가 클립
@@ -66,6 +68,11 @@ public class UIAudioManager : MonoBehaviour
     public void OnChangeEffect()
     {
         EffectSound.volume = EffectSlider.value;
+    }
+
+    public void OnPlayPopEffect()
+    {
+        EffectSound.PlayOneShot(PopSound);
     }
 
     public void UpdatePlayerScore()
