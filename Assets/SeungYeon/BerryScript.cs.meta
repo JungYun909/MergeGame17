@@ -3,7 +3,11 @@ guid: 34c797533276edd4bae594f84efcafe7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - berryAnimator: {fileID: 9058839938402937401, guid: 1dc5e5d88e4f565418ddb5d58c6318de, type: 3}
+  - appleAnimator: {fileID: 2716832483185430314, guid: ef1f2403668a0364e8a65320b42da378, type: 3}
+  - berryPrefab: {fileID: 285356984651659723, guid: 1dc5e5d88e4f565418ddb5d58c6318de, type: 3}
+  - applePrefab: {fileID: 9078089967217970314, guid: ef1f2403668a0364e8a65320b42da378, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
