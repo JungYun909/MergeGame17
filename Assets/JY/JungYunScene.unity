@@ -2607,7 +2607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b1e56553e944843b1cc2681ddcc4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  MergePoint: 0
+  uaManager: {fileID: 0}
   berryScore: 1
   appleScore: 5
   berryTag: Berry
