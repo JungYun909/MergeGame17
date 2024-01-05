@@ -7,14 +7,15 @@ public class MergeManager : MonoBehaviour
 {
     public Fruit fruit;
     private int fruitLevel;
-    private bool isMerge;
+    private bool isMerge;   
+    
 
     Rigidbody2D rigid;
     CircleCollider2D circleCollider;
     Animator animator;
 
     private void Awake()
-    {
+    {          
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
@@ -46,6 +47,8 @@ public class MergeManager : MonoBehaviour
                 {
                     // 상대방은 숨기기
                     other.HideFruit(transform.position);
+                    GameManager.I.MergePoint += other.fruit.Point;
+                    GameManager.I.uaManager.OnPlayPopEffect();
                     // 나는 레벨업
                     FruitLevleUp();
 

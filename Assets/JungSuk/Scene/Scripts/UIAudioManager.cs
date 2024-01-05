@@ -11,11 +11,14 @@ public class UIAudioManager : MonoBehaviour
     public GameObject OptionPanel;
     public TextMeshProUGUI BestScore;
     public TextMeshProUGUI MyScore;
+    public TextMeshProUGUI PlayerScore;
+   
 
     // 오디오 관리할 오브젝트
 
     public AudioSource BgmMusic;
     public AudioSource EffectSound;
+    public AudioClip PopSound;
     public Slider BgmSlider;
     public Slider EffectSlider;
     // public AudioClip Effect; //이펙트 사운드 추가 클립
@@ -25,14 +28,13 @@ public class UIAudioManager : MonoBehaviour
     {
         BgmMusic.volume = BgmSlider.value;
         EffectSound.volume = EffectSlider.value;
-        SetEndPanel();
-        SetOptionPanel();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdatePlayerScore();
     }
 
     public void SetEndPanel() // 게임 오버시 사용
@@ -57,17 +59,26 @@ public class UIAudioManager : MonoBehaviour
         }
     }
 
-    public void OnChangeBgm(float volume)
+    public void OnChangeBgm()
     {
-        BgmMusic.volume = volume;
+        BgmMusic.volume = BgmSlider.value;
     }
 
    
-    public void OnChangeEffect(float volume)
+    public void OnChangeEffect()
     {
-        EffectSound.volume = volume;
+        EffectSound.volume = EffectSlider.value;
     }
 
+    public void OnPlayPopEffect()
+    {
+        EffectSound.PlayOneShot(PopSound);
+    }
+
+    public void UpdatePlayerScore()
+    {
+        PlayerScore.text = "점수: " + GameManager.I.MergePoint.ToString();
+    }
     //베스트 스코어 텍스트 업데이트
     //public void UpdateBestScore()
     //{
