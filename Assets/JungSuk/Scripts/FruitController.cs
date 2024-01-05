@@ -8,7 +8,7 @@ public class FruitController : MonoBehaviour
     [SerializeField] private List<FruitData> fruitDatas;    
     [SerializeField] private GameObject fruitprefab;
     // Start is called before the first frame update
-    void Start()
+    /* void Start()
     {
         for(int i = 0; i < fruitDatas.Count; i++)
         {
@@ -29,4 +29,5 @@ public class FruitController : MonoBehaviour
     {
         
     }
+    */
 }
