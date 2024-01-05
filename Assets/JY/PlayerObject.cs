@@ -11,27 +11,41 @@ public class PlayerObject : MonoBehaviour
 
     public int playerObject;
 
+    Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        
+        ShowObject();
+
+    }
 
     public void OnDrop(InputValue button)
     {
 
         InputKey();
+        ShowObject();
+
     }
 
 
     // 키보드 입력을 받으면 호출되는 함수
     public void InputKey()
     {
-        GameManager.I.ObjectPop();
-        playerObject = GameManager.I.newFruitLevel;
         GiveObject();
-        ShowObject();
-      
-
     } 
 
     void ShowObject()
     {
+        GameManager.I.ObjectPop();
+        playerObject = GameManager.I.newFruitLevel;
+
+        anim.SetInteger("Level", playerObject);
         switch (playerObject)
         {
             case 1:

@@ -20,6 +20,8 @@ public class Fruit : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        level = GameManager.I.newFruitLevel;
+        anim.SetInteger("Level", level);
     }
 
     private void SettingFruit(FruitData fruitData)
@@ -37,8 +39,7 @@ public class Fruit : MonoBehaviour
 
     public void Setting()
     {
-        level = GameManager.I.newFruitLevel;
-        anim.SetInteger("Level", level);
+        
         switch (level)
         {
             case 1:
