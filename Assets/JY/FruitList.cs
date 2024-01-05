@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class FruitList : MonoBehaviour
 {
-    private GameObject[] fruits = new GameObject[10];
+    public GameObject[] fruits = new GameObject[10];
+    public Sprite[] sprites = new Sprite[10];
     public int[] fruitsID = new int[10];
-    Animator anim;
 
     private void Start()
     {
@@ -24,7 +24,9 @@ public class FruitList : MonoBehaviour
     {
         for (int i = 0; i <= 9; i++)
         {
-            fruitsID[i] = GameManager.objectID.Peek();
+            fruitsID[i] = GameManager.objectID.buffer[i];
+            fruits[i].GetComponent<SpriteRenderer>().sprite = sprites[fruitsID[i]-1];
+            fruits[i].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
         }
     }

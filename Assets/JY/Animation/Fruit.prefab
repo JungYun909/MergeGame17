@@ -145,10 +145,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71fbbc3f8bc7bf4988830590db44899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitData1: {fileID: 11400000, guid: 3e4179dcb00ee8d45af5087437e85925, type: 2}
-  fruitData2: {fileID: 11400000, guid: b090c17df9daa9f478844bf6c3f4a44e, type: 2}
-  fruitData3: {fileID: 11400000, guid: fd91aaa34f926184d9fee75f2eee1d06, type: 2}
-  fruitData4: {fileID: 11400000, guid: 68c57df8bb08f2743a10ce29c336b1e1, type: 2}
+  fruitData:
+  - {fileID: 11400000, guid: 3e4179dcb00ee8d45af5087437e85925, type: 2}
+  - {fileID: 11400000, guid: b090c17df9daa9f478844bf6c3f4a44e, type: 2}
+  - {fileID: 11400000, guid: fd91aaa34f926184d9fee75f2eee1d06, type: 2}
+  - {fileID: 11400000, guid: 68c57df8bb08f2743a10ce29c336b1e1, type: 2}
+  - {fileID: 11400000, guid: 859918fcd4b80d848ab013ea871c5f94, type: 2}
+  - {fileID: 11400000, guid: e3e722ad3b479db49bd88003712d7df5, type: 2}
+  - {fileID: 11400000, guid: c3b1641244fbb94438e9d5af6366e4b0, type: 2}
+  - {fileID: 11400000, guid: 4400de9bfb9f4634b8c4bb544ed473c8, type: 2}
+  - {fileID: 11400000, guid: 8ceec9bfc64804144b9c0d6e921587dd, type: 2}
+  - {fileID: 11400000, guid: d6e091476b995b54d9306791c0d392e4, type: 2}
   Point: 0
   level: 0
 --- !u!212 &6179294169026433446

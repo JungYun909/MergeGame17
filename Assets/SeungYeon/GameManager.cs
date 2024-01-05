@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     public void GenerateObject()
     {
         random = new System.Random();
-        int num = random.Next(1, 5);
+        int num = random.Next(1, 10);
         objectID.Push(num);
 
     }

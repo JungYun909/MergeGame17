@@ -21,7 +21,7 @@ public class RingBuffer<T>
         private set;
     }
 
-    private T[] buffer;
+    public T[] buffer;
     private int position;
 
     public RingBuffer(int size)
