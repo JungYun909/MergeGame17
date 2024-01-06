@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIAudioManager : MonoBehaviour
@@ -41,6 +42,15 @@ public class UIAudioManager : MonoBehaviour
     {
         bool IsSetEndPanel = EndPanel.activeSelf;
         EndPanel.SetActive(!IsSetEndPanel);
+        if (!IsSetEndPanel)
+        {
+            Time.timeScale = 0f;
+        }
+
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void SetOptionPanel() //옵션 버튼 클릭시 사용
@@ -57,6 +67,15 @@ public class UIAudioManager : MonoBehaviour
             // 판넬이 사라질 때 일시정지 해제
             Time.timeScale = 1f;
         }
+    }
+
+    //public void LoadStartScene()
+    //{
+    //    SceneManager.LoadScene("StartScene");
+    //}
+    public void LoadRestartScene()
+    {
+        SceneManager.LoadScene("JungYunScene");
     }
 
     public void OnChangeBgm()
@@ -99,8 +118,8 @@ public class UIAudioManager : MonoBehaviour
     //}
 
     // 마이 스코어 업데이트
-    //public void UpdateMyScore()
-    //{
-    //    MyScore.text = "";
-    //}
+    public void UpdateMyScore()
+    {
+        MyScore.text = GameManager.I.MergePoint.ToString();
+    }
 }
