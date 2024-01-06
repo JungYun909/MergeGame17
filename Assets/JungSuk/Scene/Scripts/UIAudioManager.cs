@@ -24,18 +24,22 @@ public class UIAudioManager : MonoBehaviour
     public Slider EffectSlider;
     // public AudioClip Effect; //이펙트 사운드 추가 클립
 
+    private int BestPoint;
+    private int PlayPoint;
+
     // Start is called before the first frame update
     void Start()
     {
         BgmMusic.volume = BgmSlider.value;
         EffectSound.volume = EffectSlider.value;
+        PlayPoint = GameManager.I.MergePoint;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdatePlayerScore();
+        UpdateMyScore();
     }
 
     public void SetEndPanel() // 게임 오버시 사용
@@ -94,32 +98,31 @@ public class UIAudioManager : MonoBehaviour
         EffectSound.PlayOneShot(PopSound);
     }
 
-    public void UpdatePlayerScore()
-    {
-        PlayerScore.text = "점수: " + GameManager.I.MergePoint.ToString();
-    }
+   
     //베스트 스코어 텍스트 업데이트
-    //public void UpdateBestScore()
-    //{
-    //    if (BestScore.text == null)
-    //    {
-    //        BestScore.text = MyScore.text;
-    //    }
+    public void UpdateBestScore()
+    {
+        if (PlayerPrefs.HasKey("MyBestScore") == false)
+        {
+            BestPoint = PlayPoint;
+            PlayerPrefs.SetInt("MyBestScore", BestPoint);
+        }             
 
-    //    else if(BestScore < MyScore)
-    //    {
-    //        BestScore.text = MyScore.text;
-    //    }
-
-    //    else
-    //    {
-    //        BestScore.text = BestScore.text;
-    //    }
-    //}
+        else
+        {
+            if(PlayerPrefs.GetInt("MyBestScore") < BestPoint)
+            {
+                PlayerPrefs.SetInt("MyBestScore", PlayPoint);
+                BestPoint = PlayPoint;
+            }
+        }
+    }
 
     // 마이 스코어 업데이트
     public void UpdateMyScore()
     {
-        MyScore.text = GameManager.I.MergePoint.ToString();
+        MyScore.text = PlayPoint.ToString();
+        PlayerScore.text = "점수: " + GameManager.I.MergePoint.ToString();
+        BestScore.text = BestPoint.ToString();
     }
 }
