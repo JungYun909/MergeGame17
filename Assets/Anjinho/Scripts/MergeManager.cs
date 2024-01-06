@@ -63,6 +63,14 @@ public class MergeManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EndWall"))
+        {
+            GameManager.I.uaManager.SetEndPanel();
+        }
+    }
+
     private void FruitLevleUp()
     {
         isMerge = true;
