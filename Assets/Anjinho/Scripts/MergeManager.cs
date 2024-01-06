@@ -27,6 +27,8 @@ public class MergeManager : MonoBehaviour
         fruitLevel = fruit.level;
     }
 
+    
+
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Fruit")
