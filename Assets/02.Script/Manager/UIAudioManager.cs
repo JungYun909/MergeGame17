@@ -10,6 +10,7 @@ public class UIAudioManager : MonoBehaviour
     // 판넬 띄울 오브젝트 설정
     public GameObject EndPanel;
     public GameObject OptionPanel;
+    public GameObject TutorialPanel;
     public TextMeshProUGUI BestScore;
     public TextMeshProUGUI MyScore;
     public TextMeshProUGUI PlayerScore;
@@ -57,6 +58,20 @@ public class UIAudioManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+    }
+
+    public void SetTutorial()
+    {
+        bool IsSetTutorialPanel = TutorialPanel.activeSelf;
+        TutorialPanel.SetActive(!IsSetTutorialPanel);
+        if(!IsSetTutorialPanel)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }        
     }
 
     public void SetOptionPanel() //옵션 버튼 클릭시 사용
