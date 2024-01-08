@@ -101,6 +101,7 @@ public class UIAudioManager : MonoBehaviour
 
     public void LoadStartScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("StartScene");
     }
 
