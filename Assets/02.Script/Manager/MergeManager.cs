@@ -34,8 +34,9 @@ public class MergeManager : MonoBehaviour
         if (collision.gameObject.tag == "Fruit")
         {
             MergeManager other = collision.gameObject.GetComponent<MergeManager>();
-
-            if (fruitLevel == other.fruitLevel && !isMerge && !other.isMerge && fruitLevel < 9) // 동글 합치기 (합치는 도중에 개입되는 것 방지)
+            
+            
+            if (fruitLevel == other.fruitLevel && !isMerge && !other.isMerge && fruitLevel < 10) // 동글 합치기 (합치는 도중에 개입되는 것 방지)
             {
                 // 자신과 상대편 위치 가져오기
                 float meX = transform.position.x;
@@ -56,12 +57,15 @@ public class MergeManager : MonoBehaviour
                     GameManager.I.uaManager.OnPlayPopEffect();
 
                 }
-                if (other.fruitLevel == 9 || fruitLevel == 9)
+                if (fruitLevel == 9 || other.fruitLevel == 9)
                 {
-                    Destroy(gameObject);    
+                    GameManager.I.MergePoint += other.fruit.Point;
+                    GameManager.I.uaManager.OnPlayPopEffect();
+                    Destroy(gameObject);
                 }
 
             }
+            
         }
     }
 

@@ -10,6 +10,7 @@ public class UIAudioManager : MonoBehaviour
     // 판넬 띄울 오브젝트 설정
     public GameObject EndPanel;
     public GameObject OptionPanel;
+    public GameObject TutorialPanel;
     public TextMeshProUGUI BestScore;
     public TextMeshProUGUI MyScore;
     public TextMeshProUGUI PlayerScore;
@@ -32,14 +33,16 @@ public class UIAudioManager : MonoBehaviour
     {
         BgmMusic.volume = BgmSlider.value;
         EffectSound.volume = EffectSlider.value;
-        PlayPoint = GameManager.I.MergePoint;
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayPoint = GameManager.I.MergePoint;
         UpdateMyScore();
+        UpdateBestScore();      
     }
 
     public void SetEndPanel() // 게임 오버시 사용
@@ -55,6 +58,20 @@ public class UIAudioManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+    }
+
+    public void SetTutorial()
+    {
+        bool IsSetTutorialPanel = TutorialPanel.activeSelf;
+        TutorialPanel.SetActive(!IsSetTutorialPanel);
+        if(!IsSetTutorialPanel)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }        
     }
 
     public void SetOptionPanel() //옵션 버튼 클릭시 사용
@@ -77,9 +94,15 @@ public class UIAudioManager : MonoBehaviour
     //{
     //    SceneManager.LoadScene("StartScene");
     //}
-    public void LoadRestartScene()
+    public void LoadPlayScene()
     {
         SceneManager.LoadScene("JungYunScene");
+    }
+
+    public void LoadStartScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("StartScene");
     }
 
     public void OnChangeBgm()
@@ -104,25 +127,27 @@ public class UIAudioManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("MyBestScore") == false)
         {
-            BestPoint = PlayPoint;
+            BestPoint = GameManager.I.MergePoint;
             PlayerPrefs.SetInt("MyBestScore", BestPoint);
         }             
 
         else
         {
-            if(PlayerPrefs.GetInt("MyBestScore") < BestPoint)
+            if(PlayerPrefs.GetInt("MyBestScore") < GameManager.I.MergePoint)
             {
-                PlayerPrefs.SetInt("MyBestScore", PlayPoint);
-                BestPoint = PlayPoint;
+                PlayerPrefs.SetInt("MyBestScore", GameManager.I.MergePoint);
+                BestPoint = GameManager.I.MergePoint;
             }
         }
+        BestScore.text = PlayerPrefs.GetInt("MyBestScore").ToString();
     }
 
     // 마이 스코어 업데이트
     public void UpdateMyScore()
     {
+        
         MyScore.text = PlayPoint.ToString();
         PlayerScore.text = "점수: " + GameManager.I.MergePoint.ToString();
-        BestScore.text = BestPoint.ToString();
+        
     }
 }
