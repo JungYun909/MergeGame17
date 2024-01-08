@@ -9,6 +9,7 @@ TagManager:
   - Fruit
   - Ground
   - EndBox
+  - EndWall
   layers:
   - Default
   - TransparentFX
