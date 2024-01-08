@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void GenerateObject()
     {
         random = new System.Random();
-        int num = random.Next(1, 6);
+        int num = random.Next(1,5);
         objectID.Enqueue(num);
 
     }
