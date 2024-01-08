@@ -46,7 +46,7 @@ public class PlayerObject : MonoBehaviour
         playerObject = GameManager.I.newFruitLevel;
 
         anim.SetInteger("Level", playerObject);
-        Debug.Log(playerObject);
+        
     }
 
 
