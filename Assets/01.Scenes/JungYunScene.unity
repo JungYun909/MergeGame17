@@ -1560,7 +1560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
+  m_Sprite: {fileID: 1163519750, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2226,7 +2226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
+  m_Sprite: {fileID: 1163519750, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4425,7 +4425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EndPanel: {fileID: 1999271521}
   OptionPanel: {fileID: 1381245808}
-  TutorialPanel: {fileID: 0}
+  TutorialPanel: {fileID: 584825172}
   BestScore: {fileID: 622075011}
   MyScore: {fileID: 188790502}
   PlayerScore: {fileID: 1624666381}
@@ -4699,7 +4699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
+  m_Sprite: {fileID: 1163519750, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4833,7 +4833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
+  m_Sprite: {fileID: 1163519750, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5284,7 +5284,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1095273175}
         m_TargetAssemblyTypeName: UIAudioManager, Assembly-CSharp
-        m_MethodName: SetOptionPanel
+        m_MethodName: SetTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5898,7 +5898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1443975368}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1095273175}
+        m_TargetAssemblyTypeName: UIAudioManager, Assembly-CSharp
+        m_MethodName: SetTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1443975368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5919,7 +5931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
+  m_Sprite: {fileID: 1163519750, guid: 1a46f9be1925bfc4a99c93506872afd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
